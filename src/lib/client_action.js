@@ -322,6 +322,12 @@ function exec(transport, spec, params, cb) {
           // param keys don't always match the param name, in those cases it's stored in the param def as "name"
             paramSpec.name = paramSpec.name || key;
             if (params[key] != null) {
+              if (paramSpec.json) {
+                  request.body = (request.body || {});
+                  request.body[paramSpec.name] = params[key];
+                  delete spec.params[key];
+                  break;
+              }
               if (castType[paramSpec.type]) {
                 query[paramSpec.name] = castType[paramSpec.type](paramSpec, params[key], key);
               } else {

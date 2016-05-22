@@ -6394,6 +6394,9 @@ api.update = ca({
         'all'
       ]
     },
+    doc: {
+      json: true
+    },
     fields: {
       type: 'list'
     },
