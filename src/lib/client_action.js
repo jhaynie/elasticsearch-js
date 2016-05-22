@@ -325,7 +325,6 @@ function exec(transport, spec, params, cb) {
               if (paramSpec.json) {
                   request.body = (request.body || {});
                   request.body[paramSpec.name] = params[key];
-                  delete spec.params[key];
                   break;
               }
               if (castType[paramSpec.type]) {
